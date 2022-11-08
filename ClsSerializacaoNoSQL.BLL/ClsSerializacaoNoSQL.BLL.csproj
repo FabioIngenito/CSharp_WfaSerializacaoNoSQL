@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClsSerializacaoNoSQL.DAL\ClsSerializacaoNoSQL.DAL.csproj" />
+    <ProjectReference Include="..\ClsSerializacaoNoSQL.Model\ClsSerializacaoNoSQL.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="InputBox">
+      <HintPath>..\..\wfaComparativoADOxEF\wfaComparativoADOxEF\bin\Debug\net6.0-windows\InputBox.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
