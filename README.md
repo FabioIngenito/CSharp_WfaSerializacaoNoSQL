@@ -1,3 +1,15 @@
+<h1 align="left">SERIALIZAÇÃO JSON COM MYSQL E MONGODB CRUD VS2022</h1>
+
+| :placard: Vitrine.Dev |  |
+| -------------  | --- |
+| :sparkles: Nome        | **CSharp_WfaSerializacaoNoSQL**
+| :label: Tecnologias | C# JSON MySQL MongoDB NoSQL
+
+![image](https://user-images.githubusercontent.com/24603753/204858320-9d78cb14-e3fe-450a-97c6-9fb38d9d2452.png#vitrinedev)
+
+
+<h2 align="left">Detalhes do projeto</h2>
+
 -----------------------
 ATENÇÃO! NÃO esqueça!
 -----------------------
