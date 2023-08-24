@@ -226,7 +226,6 @@ public partial class FrmSerializacaoNoSQL : Form
         if (intConta == 0) AcertaBotoes(3);
         else
         {
-
             AcertaBotoes(2);
         }
 
@@ -236,6 +235,14 @@ public partial class FrmSerializacaoNoSQL : Form
     #endregion
 
     #region Eventos
+    private void RadMSSQL_CheckedChanged(object sender, EventArgs e)
+    {
+        if (radMSSQL.Checked)
+        {
+            chBD = Convert.ToChar(radMSSQL.Tag);
+            ConfiguraBD(chBD);
+        }
+    }
 
     private void RadMySQL_CheckedChanged(object sender, EventArgs e)
     {
@@ -777,4 +784,5 @@ public partial class FrmSerializacaoNoSQL : Form
     }
 
     #endregion
+
 }
