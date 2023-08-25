@@ -110,7 +110,7 @@
             // LblNomeDoFuncionario
             // 
             LblNomeDoFuncionario.AutoSize = true;
-            LblNomeDoFuncionario.Location = new Point(123, 12);
+            LblNomeDoFuncionario.Location = new Point(135, 12);
             LblNomeDoFuncionario.Name = "LblNomeDoFuncionario";
             LblNomeDoFuncionario.Size = new Size(153, 20);
             LblNomeDoFuncionario.TabIndex = 4;
@@ -118,10 +118,10 @@
             // 
             // TxtNome
             // 
-            TxtNome.Location = new Point(123, 36);
+            TxtNome.Location = new Point(135, 36);
             TxtNome.Margin = new Padding(3, 4, 3, 4);
             TxtNome.Name = "TxtNome";
-            TxtNome.Size = new Size(402, 27);
+            TxtNome.Size = new Size(390, 27);
             TxtNome.TabIndex = 5;
             // 
             // LblEndereco
@@ -461,7 +461,7 @@
             MskCPFSupervisor.Margin = new Padding(3, 4, 3, 4);
             MskCPFSupervisor.Mask = "000\\.000\\.000\\-00";
             MskCPFSupervisor.Name = "MskCPFSupervisor";
-            MskCPFSupervisor.Size = new Size(102, 27);
+            MskCPFSupervisor.Size = new Size(115, 27);
             MskCPFSupervisor.TabIndex = 18;
             // 
             // MskCPF
@@ -470,22 +470,22 @@
             MskCPF.Margin = new Padding(3, 4, 3, 4);
             MskCPF.Mask = "000\\.000\\.000\\-00";
             MskCPF.Name = "MskCPF";
-            MskCPF.Size = new Size(102, 27);
+            MskCPF.Size = new Size(115, 27);
             MskCPF.TabIndex = 3;
             // 
             // MskTelefone
             // 
-            MskTelefone.Location = new Point(123, 259);
+            MskTelefone.Location = new Point(135, 259);
             MskTelefone.Margin = new Padding(3, 4, 3, 4);
             MskTelefone.Mask = "(99) 0000-0000";
             MskTelefone.Name = "MskTelefone";
-            MskTelefone.Size = new Size(102, 27);
+            MskTelefone.Size = new Size(111, 27);
             MskTelefone.TabIndex = 20;
             // 
             // LblTelefone
             // 
             LblTelefone.AutoSize = true;
-            LblTelefone.Location = new Point(123, 235);
+            LblTelefone.Location = new Point(135, 235);
             LblTelefone.Name = "LblTelefone";
             LblTelefone.Size = new Size(66, 20);
             LblTelefone.TabIndex = 19;

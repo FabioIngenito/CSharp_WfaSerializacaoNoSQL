@@ -20,7 +20,7 @@ namespace WfaSerializacaoNoSQL;
 
 public partial class FrmSerializacaoNoSQL : Form
 {
-    char chBD = 'y';
+    char chBD = 'm';
     public string cpf = "";
 
     public FrmSerializacaoNoSQL()
@@ -33,7 +33,8 @@ public partial class FrmSerializacaoNoSQL : Form
         ClsSerializacaoNoSQLBLL obj = new();
         int intConta = obj.ContaRegistros(chBD);
 
-        if (radMySQL.Checked) chBD = Convert.ToChar(radMySQL.Tag);
+        if (radMSSQL.Checked) chBD = Convert.ToChar(radMSSQL.Tag);
+        else if (radMySQL.Checked) chBD = Convert.ToChar(radMySQL.Tag);
         else chBD = Convert.ToChar(radMongoDB.Tag);
 
         DtpNascimento.Text = DateTime.Now.ToShortDateString();

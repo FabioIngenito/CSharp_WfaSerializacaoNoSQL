@@ -36,6 +36,11 @@ public class ClsSerializacaoNoSQLDAL : IDisposable, ICrud<ClsFuncionarioModel, s
 
         switch (BD)
         {
+            case 'm':
+                connections1 = ConfigurationManager.ConnectionStrings["SqlServerC_E1299Default"];
+                conexaoMSSQL = new SqlConnection(connections1.ConnectionString);
+                break;
+
             case 'y':
                 connections1 = ConfigurationManager.ConnectionStrings["TesteMySQL"];
                 conexaoMySQL = new MySqlConnection(connections1.ConnectionString);
@@ -502,10 +507,6 @@ public class ClsSerializacaoNoSQLDAL : IDisposable, ICrud<ClsFuncionarioModel, s
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
-        }
-        finally
-        {
-
         }
     }
 
@@ -998,14 +999,14 @@ public class ClsSerializacaoNoSQLDAL : IDisposable, ICrud<ClsFuncionarioModel, s
 
     private DataTable ListagemMSSQL(string chave)
     {
-        MySqlDataAdapter da = new();
+        SqlDataAdapter da = new();
         DataTable dt = new();
 
         try
         {
-            MySqlCommand? cmd = conexaoMySQL.CreateCommand();
+            SqlCommand? cmd = conexaoMSSQL.CreateCommand();
 
-            cmd.Connection = conexaoMySQL;
+            cmd.Connection = conexaoMSSQL;
             cmd.CommandType = CommandType.Text;
 
             //SQL
@@ -1014,9 +1015,9 @@ public class ClsSerializacaoNoSQLDAL : IDisposable, ICrud<ClsFuncionarioModel, s
             if (chave != "") sbSQL.Append("WHERE CPF = '" + chave + "'");
 
             ////adapter
-            da.SelectCommand = new MySqlCommand
+            da.SelectCommand = new SqlCommand
             {
-                Connection = conexaoMySQL,
+                Connection = conexaoMSSQL,
                 CommandType = CommandType.Text,
                 CommandText = sbSQL.ToString()
             };

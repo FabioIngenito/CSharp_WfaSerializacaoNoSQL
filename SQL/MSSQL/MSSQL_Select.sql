@@ -2,6 +2,9 @@
 Dados JSON no SQL Server
 Artigo - 02/04/2023
 https://learn.microsoft.com/pt-br/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16#store-and-index-json-data-in-sql-server
+
+Extrair um valor de texto JSON por meio da função JSON_VALUE
+https://learn.microsoft.com/pt-br/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server?view=sql-server-ver16#QUERY
 */
 
 USE [SerializacaoMSSQL];
@@ -99,58 +102,8 @@ SELECT
     JSON_VALUE(json, '$.Salario') as Salário,
     JSON_VALUE(json, '$.CPF_Supervisor') as "CPF Supervisor",
     dep.Nome, dep.Sexo, dep.Nascimento, dep.Parentesco
-FROM tbfuncionario
-CROSS JOIN
-JSON_VALUE(json, "$.Dependentes"), "$[*]"
-COLUMNS (Nome VARCHAR(100) PATH "$.Nome",
-Sexo CHAR(1) PATH "$.Sexo",
-Nascimento DATETIME PATH "$.Nascimento",
-Parentesco VARCHAR(19) PATH "$.Parentesco")) dep;
+FROM tbfuncionario f 
+	CROSS APPLY OPENJSON(f.json, '$.Dependentes')
+		WITH(Nome nvarchar(MAX), Sexo char(1), Nascimento datetime, Parentesco nvarchar(100)) dep
 
 -----------------------------------------------
-
-DECLARE @Registro NVARCHAR(MAX)
-
-Set @Registro = N'{"CPF":"44222555587",
-  "Nome":"Getúlio Vargas", 
-  "Endereco":"Rua 9 de Julho, 1932 - São Paulo / SP", 
-  "Id_Departamento":1,
-  "Nome_Departamento":"Administrativo", 
-  "Nascimento":"1972-07-09T00:12:00", 
-  "Sexo":"M", 
-  "Salario": 5000.00, 
-  "Telefone":"(11) 9999-9999",
-  "CPF_Supervisor":"73682332235",  
-  "Dependentes":[{"Nome":"Rodrigo de Souza Coutinho", "Sexo":"M", "Nascimento":"1997-11-15T00:12:00", "Parentesco":"Filho"}, 
-				 {"Nome":"Marcia Aparecida de Souza", "Sexo":"F", "Nascimento":"1970-07-16T00:12:00", "Parentesco":"Esposa"}]}';
-
-SELECT CPF,
- JSON_VALUE(@Registro,'$.Dependentes.Nome') AS Nome
-FROM tbFuncionario
-WHERE JSON_VALUE(@Registro,'$.Dependentes.Parentesco') LIKE 'Filh%'
-ORDER BY JSON_VALUE(@Registro,'$.Dependentes.Nascimento')
-
------------------------------------------------
-
-
-SELECT 
-JSON_VALUE(json, '$.CPF') AS CPF, 
-JSON_VALUE(json, '$.Nome') AS Nome, 
-JSON_VALUE(json, '$.Endereco') AS Endereco, 
-JSON_VALUE(json, '$.Id_Departamento') AS Id_Departamento, 
-JSON_VALUE(json, '$.Nome_Departamento') AS Nome_Departamento, 
-JSON_VALUE(json, '$.Nascimento') AS Nascimento, 
-JSON_VALUE(json, '$.Sexo') AS Sexo, 
-JSON_VALUE(json, '$.Salario') AS Salario, 
-JSON_VALUE(json, '$.Telefone') AS Telefeone, 
-JSON_VALUE(json, '$.CPF_Supervisor') AS CPF_Supervisor, 
-dep.Nome, dep.Sexo, dep.Nascimento, dep.Parentesco 
-FROM tbfuncionario 
-CROSS JOIN 
-JSON_QUERY('$.Dependentes', '$[*]' 
-COLUMNS (Nome VARCHAR(100) PATH '$.Nome', 
-Sexo VARCHAR(1) PATH '$.Sexo', 
-Nascimento DATETIME PATH '$.Nascimento', 
-Parentesco VARCHAR(30) PATH '$.Parentesco')
-) dep 
-WHERE CPF like '%22222222223%';
