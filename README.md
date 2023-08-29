@@ -160,11 +160,11 @@ https://learn.microsoft.com/pt-br/sql/relational-databases/json/validate-query-a
 Funções JSON (Transact-SQL)
 Artigo - 30/05/2023
 
-ISJSON - Testa se uma cadeia de caracteres contém um JSON válido.
-JSON_VALUE - Extrai um valor escalar de uma cadeia de caracteres JSON.
-JSON_QUERY - Extrai um objeto ou uma matriz de uma cadeia de caracteres JSON.
-JSON_MODIFY - Atualiza o valor de uma propriedade em uma cadeia de caracteres JSON e retorna a cadeia de caracteres JSON atualizada.
-JSON_PATH_EXISTS - Testa se existe um caminho SQL/JSON especificado na cadeia de caracteres JSON de entrada.
+- ISJSON - Testa se uma cadeia de caracteres contém um JSON válido.
+- JSON_VALUE - Extrai um valor escalar de uma cadeia de caracteres JSON.
+- JSON_QUERY - Extrai um objeto ou uma matriz de uma cadeia de caracteres JSON.
+- JSON_MODIFY - Atualiza o valor de uma propriedade em uma cadeia de caracteres JSON e retorna a cadeia de caracteres JSON atualizada.
+- JSON_PATH_EXISTS - Testa se existe um caminho SQL/JSON especificado na cadeia de caracteres JSON de entrada.
 
 https://learn.microsoft.com/pt-br/sql/t-sql/functions/json-functions-transact-sql?view=sql-server-ver16
 
