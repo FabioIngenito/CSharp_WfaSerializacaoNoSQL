@@ -322,6 +322,7 @@ public partial class FrmSerializacaoNoSQL : Form
         {
             cpf = ClsFormularioBLL.LimpaMascaraCPF(MskCPF.Text);
             MskCPF.Text = "";
+            MskCPF.Enabled = true;
             BtnIncluir.Tag = "I";
             BtnLimparCampos_Click(sender, e);
             AcertaBotoes(1);

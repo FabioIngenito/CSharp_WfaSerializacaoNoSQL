@@ -101,9 +101,26 @@ SELECT
     JSON_VALUE(json, '$.Sexo') as Sexo,
     JSON_VALUE(json, '$.Salario') as Salário,
     JSON_VALUE(json, '$.CPF_Supervisor') as "CPF Supervisor",
-    dep.Nome, dep.Sexo, dep.Nascimento, dep.Parentesco
+	JSON_VALUE(json, '$.Dependentes.Nome') AS Nome
+    --dep.Nome, dep.Sexo, dep.Nascimento, dep.Parentesco
 FROM tbfuncionario f 
 	CROSS APPLY OPENJSON(f.json, '$.Dependentes')
 		WITH(Nome nvarchar(MAX), Sexo char(1), Nascimento datetime, Parentesco nvarchar(100)) dep
 
 -----------------------------------------------
+
+SELECT 
+JSON_VALUE(json, '$.CPF') AS CPF, JSON_VALUE(json, '$.Nome') AS Nome, JSON_VALUE(json, '$.Endereco') AS Endereco, 
+JSON_VALUE(json, '$.Id_Departamento') AS Id_Departamento, JSON_VALUE(json, '$.Nome_Departamento') AS Nome_Departamento, 
+JSON_VALUE(json, '$.Nascimento') AS Nascimento, JSON_VALUE(json, '$.Sexo') AS Sexo, JSON_VALUE(json, '$.Salario') AS Salario, 
+JSON_VALUE(json, '$.Telefone') AS Telefone, JSON_VALUE(json, '$.CPF_Supervisor') AS CPF_Supervisor,
+dep.Nome, dep.Sexo, dep.Nascimento, dep.Parentesco
+FROM tbfuncionario f
+		CROSS APPLY OPENJSON(f.JSON, '$.Dependentes')
+			WITH(Nome varchar(MAX), Sexo char(1), Nascimento datetime, Parentesco varchar(MAX))  dep
+WHERE CPF like '%44222555587%';
+
+-----------------------------------------------
+
+SELECT JSON_VALUE(json, '$.CPF') AS CPF, JSON_VALUE(json, '$.Nome') AS Nome, JSON_VALUE(json, '$.Endereco') AS Endereco, JSON_VALUE(json, '$.Id_Departamento') AS Id_Departamento, JSON_VALUE(json, '$.Nome_Departamento') AS Nome_Departamento, JSON_VALUE(json, '$.Nascimento') AS Nascimento, JSON_VALUE(json, '$.Sexo') AS Sexo, JSON_VALUE(json, '$.Salario') AS Salario, JSON_VALUE(json, '$.Telefone') AS Telefone, JSON_VALUE(json, '$.CPF_Supervisor') AS CPF_Supervisor, dep.Nome, dep.Sexo, dep.Nascimento, dep.Parentesco FROM tbfuncionario f CROSS APPLY OPENJSON(f.JSON, '$.Dependentes') WITH(Nome varchar(MAX), Sexo char(1), Nascimento datetime, Parentesco varchar(MAX)) dep WHERE CPF like '%44222555587%';
+

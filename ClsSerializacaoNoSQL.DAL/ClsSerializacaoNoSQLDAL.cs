@@ -276,7 +276,7 @@ public class ClsSerializacaoNoSQLDAL : IDisposable, ICrud<ClsFuncionarioModel, s
     private string IncluirMySQL3(ClsFuncionarioModel entidade)
     {
         string retorno = "";
-        string strSQL = "INSERT INTO tbfuncionario (CPF, `JSON`) VALUES (@CPF,@JSON);";
+        string strSQL = "INSERT INTO tbfuncionario (CPF, JSON) VALUES (@CPF,@JSON);";
 
         try
         {
@@ -364,7 +364,7 @@ public class ClsSerializacaoNoSQLDAL : IDisposable, ICrud<ClsFuncionarioModel, s
 
     private void AlterarMSSQL(ClsFuncionarioModel entidade)
     {
-        StringBuilder strBuilderSQL = new("UPDATE tbfuncionario SET CPF = '@CPF', `JSON` = '@JSON' WHERE CPF = '@CPF';");
+        StringBuilder strBuilderSQL = new("UPDATE tbfuncionario SET CPF = '@CPF', JSON = '@JSON' WHERE CPF = '@CPF';");
 
         try
         {
@@ -773,13 +773,10 @@ public class ClsSerializacaoNoSQLDAL : IDisposable, ICrud<ClsFuncionarioModel, s
             sbSQL.Append("JSON_VALUE(json, '$.Telefone') AS Telefone, ");
             sbSQL.Append("JSON_VALUE(json, '$.CPF_Supervisor') AS CPF_Supervisor, ");
             sbSQL.Append("dep.Nome, dep.Sexo, dep.Nascimento, dep.Parentesco ");
-            sbSQL.Append("FROM tbfuncionario ");
-            sbSQL.Append("CROSS JOIN ");
-            sbSQL.Append("JSON_TABLE(JSON_VALUE(json, '$.Dependentes'), '$[*]' ");
-            sbSQL.Append("COLUMNS (Nome VARCHAR(100) PATH '$.Nome', ");
-            sbSQL.Append("Sexo VARCHAR(1) PATH '$.Sexo', ");
-            sbSQL.Append("Nascimento DATETIME PATH '$.Nascimento', ");
-            sbSQL.Append("Parentesco VARCHAR(30) PATH '$.Parentesco')) dep ");
+            sbSQL.Append("FROM tbfuncionario f ");
+            sbSQL.Append("CROSS APPLY ");
+            sbSQL.Append("OPENJSON(f.JSON, '$.Dependentes') ");
+            sbSQL.Append("WITH(Nome varchar(MAX), Sexo char(1), Nascimento datetime, Parentesco varchar(MAX)) dep ");
 
             if (chave != "" && long.TryParse(chave, out _))
                 sbSQL.Append("WHERE CPF like '%" + chave + "%';");
@@ -1169,7 +1166,8 @@ public class ClsSerializacaoNoSQLDAL : IDisposable, ICrud<ClsFuncionarioModel, s
             cmd.CommandText = strBuilderSQL.ToString();
 
             conexaoMSSQL.Open();
-            long result = (long)cmd.ExecuteScalar();
+            //long result = (long)cmd.ExecuteScalar();
+            int result = (int)cmd.ExecuteScalar();
             conexaoMSSQL.Close();
 
             if ((long)result > 0) return true;

@@ -658,7 +658,7 @@
             BtnPesquisarBD.Location = new Point(14, 731);
             BtnPesquisarBD.Margin = new Padding(3, 4, 3, 4);
             BtnPesquisarBD.Name = "BtnPesquisarBD";
-            BtnPesquisarBD.Size = new Size(214, 61);
+            BtnPesquisarBD.Size = new Size(322, 61);
             BtnPesquisarBD.TabIndex = 44;
             BtnPesquisarBD.Text = "Pesquisar &QTD Dependentes no Banco de Dados (NÃO GRID)";
             BtnPesquisarBD.TextAlign = ContentAlignment.TopLeft;

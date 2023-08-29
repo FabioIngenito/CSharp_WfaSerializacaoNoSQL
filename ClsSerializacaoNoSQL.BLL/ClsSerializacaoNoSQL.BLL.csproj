@@ -10,11 +10,12 @@
   <ItemGroup>
     <ProjectReference Include="..\ClsSerializacaoNoSQL.DAL\ClsSerializacaoNoSQL.DAL.csproj" />
     <ProjectReference Include="..\ClsSerializacaoNoSQL.Model\ClsSerializacaoNoSQL.Model.csproj" />
+    <ProjectReference Include="..\InputBox\InputBox\InputBox.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="InputBox">
-      <HintPath>bin\Debug\net6.0-windows\InputBox.dll</HintPath>
+      <HintPath>..\InputBox\InputBox\bin\Debug\InputBox.dll</HintPath>
     </Reference>
   </ItemGroup>
 

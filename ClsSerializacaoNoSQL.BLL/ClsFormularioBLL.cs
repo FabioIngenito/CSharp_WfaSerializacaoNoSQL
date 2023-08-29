@@ -3,7 +3,7 @@ using static System.Windows.Forms.Design.AxImporter;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
-using InputBox;
+//using InputBox;
 using static System.Net.WebRequestMethods;
 
 namespace ClsSerializacaoNoSQL.BLL;
@@ -132,41 +132,41 @@ public class ClsFormularioBLL
         }
     }
 
-    /// <summary>
-    /// Não existe "inputbox" no C#!!!
-    /// Então fui perguntar para o Macoratti...
-    /// Site:
-    /// http://www.macoratti.net/10/10/c_inbox.htm
-    /// 
-    /// Mas... começou a apresentar erro por obsolência, então descontinuei... 
-    /// 
-    /// How to fix error Could not load file or assembly
-    /// 10 de dez.de 2012
-    /// Vis Dotnet
-    /// https://youtu.be/cVFryoIsu2c
-    /// </summary>
-    /// <param name="prompt">Texto que aparece para o usuário.</param>
-    /// <param name="title">Título de formulário</param>
-    /// <param name="defaultValue">Valor Padrão da caixa de texto - opcional</param>
-    /// <returns>Retorna o valor digitado na caixa de texto.</returns>
-    public static string InputBox(string prompt, string title, string defaultValue)
-    {
-        using InputBoxDialog ib = new();
+    ///// <summary>
+    ///// Não existe "inputbox" no C#!!!
+    ///// Então fui perguntar para o Macoratti...
+    ///// Site:
+    ///// http://www.macoratti.net/10/10/c_inbox.htm
+    ///// 
+    ///// Mas... começou a apresentar erro por obsolência, então descontinuei... 
+    ///// 
+    ///// How to fix error Could not load file or assembly
+    ///// 10 de dez.de 2012
+    ///// Vis Dotnet
+    ///// https://youtu.be/cVFryoIsu2c
+    ///// </summary>
+    ///// <param name="prompt">Texto que aparece para o usuário.</param>
+    ///// <param name="title">Título de formulário</param>
+    ///// <param name="defaultValue">Valor Padrão da caixa de texto - opcional</param>
+    ///// <returns>Retorna o valor digitado na caixa de texto.</returns>
+    //public static string InputBox(string prompt, string title, string defaultValue)
+    //{
+    //    using InputBoxDialog ib = new();
 
-        ib.FormPrompt = prompt;
-        ib.FormCaption = title;
-        ib.DefaultValue = defaultValue;
-        ib.ShowDialog();
+    //    ib.FormPrompt = prompt;
+    //    ib.FormCaption = title;
+    //    ib.DefaultValue = defaultValue;
+    //    ib.ShowDialog();
 
-        string? s = ib.InputResponse;
+    //    string? s = ib.InputResponse;
 
-        ib.Close();
+    //    ib.Close();
 
-        if (s == string.Empty)
-            return "";
-        else
-            return s;
-    }
+    //    if (s == string.Empty)
+    //        return "";
+    //    else
+    //        return s;
+    //}
 
     /// <summary>
     /// Do site:
