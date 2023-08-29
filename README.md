@@ -3,7 +3,7 @@
 | :placard: Vitrine.Dev |  |
 | -------------  | --- |
 | :sparkles: Nome        | **CSharp_WfaSerializacaoNoSQL**
-| :label: Tecnologias | C# JSON MySQL MongoDB NoSQL
+| :label: Tecnologias | C# JSON MySQL MongoDB NoSQL MSSQLServer
 
 ![image](https://user-images.githubusercontent.com/24603753/204858320-9d78cb14-e3fe-450a-97c6-9fb38d9d2452.png#vitrinedev)
 
