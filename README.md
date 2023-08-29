@@ -5,7 +5,7 @@
 | :sparkles: Nome       | **CSharp_WfaSerializacaoNoSQL**         |
 | :label: Tecnologias   | C# JSON MySQL MongoDB NoSQL MSSQLServer |
 
-![image](https://user-images.githubusercontent.com/24603753/204858320-9d78cb14-e3fe-450a-97c6-9fb38d9d2452.png#vitrinedev)
+![image](https://github.com/FabioIngenito/CSharp_WfaSerializacaoNoSQL/assets/24603753/2666b7a7-3ba5-4dfa-b75c-3a3cecbd4107#vitrinedev)
 
 <h2 align="left">Detalhes do projeto</h2>
 
