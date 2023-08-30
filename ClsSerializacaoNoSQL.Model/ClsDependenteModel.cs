@@ -25,7 +25,7 @@ public class ClsDependenteModel
 
     #endregion
 
-    #region Atributos
+    #region Propriedades
 
     public string? Nome
     {

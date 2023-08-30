@@ -4,7 +4,6 @@
 // RETIRE: "ObjectId{ ... } (MAS DEIXE O VALOR)
 
 using System.ComponentModel.DataAnnotations;
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace ClsSerializacaoNoSQL.Model;
